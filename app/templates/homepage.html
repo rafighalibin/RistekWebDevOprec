@@ -56,7 +56,7 @@
     })
 
     function getDataDefault(){
-        $.get('http://127.0.0.1:8000/api/get/?format=json', function (data) {
+        $.get('/api/get/?format=json', function (data) {
           showDefault(data)
         })
     }
