@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+	background: #01162D; 
+}
+.e2_35 { 
+	overflow:hidden;
+}
+.e2_35 { 
+	box-shadow:0px 5.615384578704834px 11.230769157409668px rgba(12.000000234693289, 24.000000469386578, 47.0000009983778, 1);
+	width:1438px;
+	height:100px;
+	position:absolute;
+}
+.e2_36 { 
+	width:373px;
+	height:72.46154022216797px;
+	position:absolute;
+	left:0px;
+	top:13.769229888916016px;
+}
+.e2_37 { 
+	width:53.39904022216797px;
+	height:72.46154022216797px;
+	position:absolute;
+	left:45.800479888916016px;
+	top:0px;
+}
+.e3_56 { 
+	background-color:rgba(255, 255, 255, 1);
+	width:30.9375px;
+	height:50px;
+	position:absolute;
+	left:11.230766296386719px;
+	top:11.230769157409668px;
+}
+.e2_39 { 
+	color:rgba(255, 255, 255, 1);
+	width:212px;
+	height:40px;
+	position:absolute;
+	left:115.19952392578125px;
+	top:16.230770111083984px;
+	font-family:Poppins;
+	text-align:left;
+	font-size:26.953845977783203px;
+	letter-spacing:0;
+}
+.e2_40 { 
+	width:232px;
+	height:77.29063415527344px;
+	position:absolute;
+	left:1161.076904296875px;
+	top:11.354682922363281px;
+}
+.e2_49 { 
+	width:151.25668334960938px;
+	height:77.29063415527344px;
+	position:absolute;
+	left:40.37165832519531px;
+	top:0px;
+}
+.e3_54 { 
+	width:77.2720718383789px;
+	height:77.29063415527344px;
+	position:absolute;
+	left:0px;
+	top:0px;
+}
+.e3_55 { 
+	width:54.81053161621094px;
+	height:54.82909393310547px;
+	position:absolute;
+	left:11.230766296386719px;
+	top:11.230769157409668px;
+	border-top-left-radius:27.40526580810547px;
+	border-top-right-radius:27.40526580810547px;
+	border-bottom-left-radius:27.40526580810547px;
+	border-bottom-right-radius:27.40526580810547px;
+	background-image:url(images/logo_edutjie_2021__coloured__1.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.e2_50 { 
+	color:rgba(255, 255, 255, 1);
+	width:65px;
+	height:22px;
+	position:absolute;
+	left:86.25668334960938px;
+	top:27.64531707763672px;
+	font-family:Poppins;
+	text-align:left;
+	font-size:17.96923065185547px;
+	letter-spacing:0;
+}
+h1 {
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 46px;
+	line-height: 69px;
+
+	color: #FFFFFF;
+}
+
+.card-body{
+	color: #FFFFFF;
+	background: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+	box-shadow: 6.39689px 6.39689px 19.1907px #1D2E4E;
+	border-radius: 25.5876px; 
+}
+.card-date{
+	font-family: 'Poppins';
+	font-style: normal;
+	font-size: 12px;
+	/* identical to box height */
+	color: #FFFFFF;
+}
+
+.card-creator{
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 120%;
+	color: #FFFFFF;
+}
+
+.card-text{
+	font-family: 'Plus Jakarta Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 24.4916px;
+	line-height: 120%;
+
+	display: flex;
+	align-items: center;
+
+	color: #FFFFFF;
+}
+
+.card{  
+	border: none;
+	--bs-card-bg: none;   
+}
+.fa-trash-can{
+	color: #FF7070;
+	background: none;
+	border: none;
+}
+.fa-pen-to-square{
+	color: #ffffff;
+	background: none;
+	border: none;
+}
+.post-button{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 20px;
+	gap: 8px;
+
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 900;
+	font-size: 16px;
+	line-height: 120%;
+
+	width: 217px;
+	height: 48px;    
+	border-width: 0px;
+
+	background: #FFFFFF;
+	box-shadow: 0px 4px 8px #DAEBF3;
+	border-radius: 8px;
+}
+
+.form-control{
+	left: 3.98%;
+	right: 61.65%;
+	top: 10.32%;
+	bottom: 78.03%;
+	resize: none;
+	
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #ffffff;
+
+
+	background: #01162D; 
+	border: 2px solid #88BFE8;
+	filter: drop-shadow(0px 1px 6px #C5E0EB);
+	border-radius: 8px;
+}
+
+.form-control:focus{
+	left: 3.98%;
+	right: 61.65%;
+	top: 10.32%;
+	bottom: 78.03%;
+	
+	
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	color: #ffffff;
+	resize: none;
+
+	background: #01162D; 
+	border: 2px solid #88BFE8;
+	filter: drop-shadow(0px 1px 6px #C5E0EB);
+	border-radius: 8px;
+}
+
+ 
