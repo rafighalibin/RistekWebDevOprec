@@ -9,51 +9,56 @@
     {% endblock meta %}
 
 {% block content %}
+<head>
+  <title>RISTEK MedSOS</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+</head>
 
-<div class="d-flex justify-content-start" >
-    <img src="{% static "media/RistekLogo.svg" %}"/>
-    <h1>RISTEK MedSOS</h1>
-</div> 
+<body>
+  <div class="d-flex justify-content-start" >
+      <img src="{% static "media/RistekLogo.svg" %}"/>
+      <h1>RISTEK MedSOS</h1>
+  </div> 
 
-<div class="d-flex flex-column" style="row-gap: 36px;">
-    <div class="d-flex justify-content-center" >
-        <h1>Welcome</h1>
-    </div> 
-    <div class="d-flex justify-content-center" style="column-gap: 16px;">
-        <container>
-            <textarea name="tweet" form="tweetform" rows="10" cols="70" placeholder="What’s happening?" class="form-control">{{content}}</textarea>
-        </container>
-        {% if content %}
-        <div class="d-flex align-items-end">
-            <form method="POST" action="" id="tweetform">
-                <div class="text-center">
-                    <div class="d-flex flex-column" style="row-gap: 16px;">
-                        <button type="submit" class="post-button">Save<i class="fa-regular fa-floppy-disk"></i></button>
-                        <button type="submit" class="post-button" onclick="location.href='/'';">Discard<i class="fa-regular fa-trash-can"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
+  <div class="d-flex flex-column" style="row-gap: 36px;">
+      <div class="d-flex justify-content-center" >
+          <h1>Welcome</h1>
+      </div> 
+      <div class="d-flex justify-content-center" style="column-gap: 16px;">
+          <container>
+              <textarea name="tweet" form="tweetform" rows="10" cols="70" placeholder="What’s happening?" class="form-control">{{content}}</textarea>
+          </container>
+          {% if content %}
+          <div class="d-flex align-items-end">
+              <form method="POST" action="" id="tweetform">
+                  <div class="text-center">
+                      <div class="d-flex flex-column" style="row-gap: 16px;">
+                          <button type="submit" class="post-button">Save<i class="fa-regular fa-floppy-disk"></i></button>
+                          <button type="submit" class="post-button" onclick="location.href='/'';">Discard<i class="fa-regular fa-trash-can"></i></button>
+                      </div>
+                  </div>
+              </form>
+          </div>
 
-        {% else %}
-        <div class="d-flex align-items-end">
-            <form method="POST" action="" id="tweetform">
-                <div class="text-center"><button type="submit" class="post-button">Post<i class="fa-regular fa-paper-plane"></i></i></button>
-                </div>
-            </form>
-        </div>
-        {% endif %} 
-    </div>
-    <container class="container-sm">
-        <div class="d-flex flex-column" id="containerMain"></div> 
-    </container>
-</div>
+          {% else %}
+          <div class="d-flex align-items-end">
+              <form method="POST" action="" id="tweetform">
+                  <div class="text-center"><button type="submit" class="post-button">Post<i class="fa-regular fa-paper-plane"></i></i></button>
+                  </div>
+              </form>
+          </div>
+          {% endif %} 
+      </div>
+      <container class="container-sm">
+          <div class="d-flex flex-column" id="containerMain"></div> 
+      </container>
+  </div>
 
 
-<script>
-    $(document).ready(() => {
-      getDataDefault()
-    })
+  <script>
+      $(document).ready(() => {
+        getDataDefault()
+      })
 
     function getDataDefault(){
         $.get('/api/get/?format=json', function (data) {
@@ -61,91 +66,92 @@
         })
     }
 
-    function showDefault(data){
-        user_now = "{{user_token}}"
-        var container = document.getElementById("containerMain")
-        container.innerHTML = ""
-        
-        if (data.length == 0) {
-          showNodata()
-          return
-        }
-        data.forEach(element => {
-            var content = element.content
-            var time_created = element.time_created 
-            var creator = element.creator 
-            var pk = element.id 
-  
-          var card = document.createElement("div")
-          card.className = "card mb-4 py-0"
+      function showDefault(data){
+          user_now = "{{user_token}}"
+          var container = document.getElementById("containerMain")
+          container.innerHTML = ""
+          
+          if (data.length == 0) {
+            showNodata()
+            return
+          }
+          data.forEach(element => {
+              var content = element.content
+              var time_created = element.time_created 
+              var creator = element.creator 
+              var pk = element.id 
+    
+            var card = document.createElement("div")
+            card.className = "card mb-4 py-0"
+              
+            var cardBody = document.createElement("div")
+            cardBody.className = "card-body px-10 d-flex justify-content-between"
+
+            var cardHeader = document.createElement("div")
+            cardHeader.className = "d-flex justify-content-left align-middle"
+            cardHeader.style = "flex-flow: row; align-items: center; column-gap: 7px;"
+
+            var cardTitle = document.createElement("h5")
+            cardTitle.className = "card-creator"
             
-          var cardBody = document.createElement("div")
-          cardBody.className = "card-body px-10 d-flex justify-content-between"
+            if (creator == user_now) {
+              cardTitle.innerHTML = "Anonymous (You)"
+            }else{
+              cardTitle.innerHTML = "Anonymous"
+            }
+    
+            var cardSubtitle = document.createElement("h6")
+            cardSubtitle.className = "card-date"
+            cardSubtitle.innerHTML = time_created.substring(0,time_created.indexOf("T"))
 
-          var cardHeader = document.createElement("div")
-          cardHeader.className = "d-flex justify-content-left align-middle"
-          cardHeader.style = "flex-flow: row; align-items: center; column-gap: 7px;"
+            cardHeader.appendChild(cardTitle)
+            cardHeader.appendChild(cardSubtitle)
 
-          var cardTitle = document.createElement("h5")
-          cardTitle.className = "card-creator"
+            var cardContent = document.createElement("h2")
+            cardContent.className = "card-text"
+            cardContent.innerHTML = content
+            
+            var buttonDelete = document.createElement("button")
+            var buttonEdit = document.createElement("button")
           
-          if (creator == user_now) {
-            cardTitle.innerHTML = "Anonymous (You)"
-          }else{
-            cardTitle.innerHTML = "Anonymous"
-          }
-  
-          var cardSubtitle = document.createElement("h6")
-          cardSubtitle.className = "card-date"
-          cardSubtitle.innerHTML = time_created.substring(0,time_created.indexOf("T"))
+            var cardButtons = document.createElement("div")
+            cardButtons.className = "d-flex align-items-start"
 
-          cardHeader.appendChild(cardTitle)
-          cardHeader.appendChild(cardSubtitle)
+            var cardText = document.createElement("div")
+            cardText.className = "d-flex flex-column"
+            
+            cardText.appendChild(cardHeader)
+            cardText.appendChild(cardContent)
 
-          var cardContent = document.createElement("h2")
-          cardContent.className = "card-text"
-          cardContent.innerHTML = content
-          
-          var buttonDelete = document.createElement("button")
-          var buttonEdit = document.createElement("button")
+            if (creator == user_now) {
+              buttonDelete.className = "fa-regular fa-trash-can"
+              buttonDelete.onclick = function () {
+                deleteTweet(pk)
+              };
+              buttonEdit.className = "fa-solid fa-pen-to-square"
+              buttonEdit.onclick = function () {
+                  editTweet(pk)
+              };
+
+              cardButtons.appendChild(buttonDelete)
+              cardButtons.appendChild(buttonEdit)
+            }
+    
+            cardBody.appendChild(cardText)
+            cardBody.appendChild(cardButtons)
+            card.appendChild(cardBody)
+            container.appendChild(card)          
+          })
+        }
+
+        function deleteTweet(id) {
+          window.location.href = '/deleteTweet/'+ id
+        }
         
-          var cardButtons = document.createElement("div")
-          cardButtons.className = "d-flex align-items-start"
+        function editTweet(id) {
+          window.location.href = '/editTweet/'+ id
+        }
 
-          var cardText = document.createElement("div")
-          cardText.className = "d-flex flex-column"
-          
-          cardText.appendChild(cardHeader)
-          cardText.appendChild(cardContent)
-
-          if (creator == user_now) {
-            buttonDelete.className = "fa-regular fa-trash-can"
-            buttonDelete.onclick = function () {
-              deleteTweet(pk)
-            };
-            buttonEdit.className = "fa-solid fa-pen-to-square"
-            buttonEdit.onclick = function () {
-                editTweet(pk)
-            };
-
-            cardButtons.appendChild(buttonDelete)
-            cardButtons.appendChild(buttonEdit)
-          }
-  
-          cardBody.appendChild(cardText)
-          cardBody.appendChild(cardButtons)
-          card.appendChild(cardBody)
-          container.appendChild(card)          
-        })
-      }
-
-      function deleteTweet(id) {
-        window.location.href = '/deleteTweet/'+ id
-      }
-      
-      function editTweet(id) {
-        window.location.href = '/editTweet/'+ id
-      }
-
-</script>
+  </script>
+</body>
 {% endblock content %}  
